@@ -32,6 +32,12 @@ public class tabViewArousal extends Fragment {
     private Handler handler = new Handler();
     private double averageRestingHeartRate;
 
+    @Override //Stops app from crashing if back button is pushed without pushing stop first
+    public void onDetach() {
+        super.onDetach();
+        handler.removeCallbacks(updateHR);
+    }
+
     //Evie's Code
     private int outerColor = Color.rgb(0,0,0);
     private int innerColor = Color.rgb(0,0,0);
